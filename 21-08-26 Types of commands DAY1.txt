@@ -1,0 +1,123 @@
+#CREATING DATABASE
+
+syntax:
+1.create database database_name;
+          
+           (OR)
+2.	create database if not exist database_name;
+
+EX: create database pfs001002;
+
+FIRST: CREATING DATABASE
+SECOND: USE DATABASE
+
+USE Syntax: use database_name;
+
+#TABLES CREATE CHEYYADANIKII
+
+Syntax:
+
+create table table_name(
+                   cloumn1 datatype constraint,
+                   cloumn1 datatype constraint,
+                       .
+                       .
+                       .
+                   column n datatype constraint);
+
+EX:
+create table Employee(
+                   id INT,
+                   name varchar(50), #python loo name kii string data type use chestham but in SQL loo varchar datatype use chestam name kii,()--> name
+                                                                                                                             length batti name istham 
+                                                                                                                                                                                                       role varchar(30),
+                   salary INT);
+   
+
+#ippudu tables loo em em unnayi chupinchadanikii konii commands use chestham:
+
+1.showtables-->idhi manam database loo em em tables create ayyi unnayo chupistundhi
+2.desc--> desc in sense (describe) idhi enduku use chestham ante manam em em fields insert(attributes) chesamo table loo avii anii vasthayi 
+   
+   SYNTAX: desc table_name;
+   EX:
+      desc employee:
+
+3.showbases--> idhi em em databse unnayo chupistundhi             
+
+
+
+#DROP TABLE CHESDAM IPPUDU CREATE CHESUNA TABLE
+ 
+
+DROP TABLE ante--> Entire table nii delete cheyyadam
+  syntax: drop database database_name:
+   
+   EX: drop database pfs001002;
+
+
+
+
+#MYSQL COMMUNITY loo RUN chesa
+
+mysql> create database pfs001002;
+ERROR 1007 (HY000): Can't create database 'pfs001002'; database exists
+mysql> use pfs001002;
+Database changed
+mysql> create table Employee(
+    ->                    id INT,
+    ->                    name varchar(50),
+    ->                    role varchar(30),
+    ->                    salary INT);
+ERROR 1050 (42S01): Table 'employee' already exists
+mysql> show tables;
++---------------------+
+| Tables_in_pfs001002 |
++---------------------+
+| employee            |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> desc Employee
+    -> ^C
+mysql> desc Employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| name   | varchar(50) | YES  |     | NULL    |       |
+| role   | varchar(30) | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| pfs001002          |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> drop database pfs001002;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql>
+
+
+
