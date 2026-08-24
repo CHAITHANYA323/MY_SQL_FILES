@@ -1,0 +1,398 @@
+TODAY WE COVERED
+1.INSERT TO:-
+SYNTAX:
+1>insert into employee values(attribute values)
+2>insert into employee (attribute names(, values(attribute values)
+
+2.ALTER:-
+SYNTAX:
+alter table employee  ADD adding attribute datatype();
+
+3.UPDATE:-
+SYNTAX:
+update employee set attribute_name =attribute_value where condition id=number;
+
+CONSTRAINTS
+
+WHAT IS CONSTRAINT?
+A Rule that controls what kind of data can be stored in a table
+we have different types pf contraints:
+primary key
+Not Null
+Unique
+Check
+Default
+Foreign Key 
+
+EXAMPLE:
+create table employee_details(
+            emp_id INT PRIMARY KEY,
+            emp_name Varchar(20) NOT NULL,
+            email varchar (50) UNIQUE,   
+            age INT check (age>=18),
+            sal INT DEFAULT 25000);
+
+
+
+
+
+Practical Implementation In SQL COMMUNITY
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| pfs0010002         |
+| pfs001002          |
+| sys                |
++--------------------+
+8 rows in set (0.09 sec)
+
+mysql> use pfs001002;
+Database changed
+mysql> desc employee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(50) | YES  |     | NULL    |       |
+| role  | varchar(30) | YES  |     | NULL    |       |
+| sal   | int         | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into employee values(1,'harsha', 'web developer',1000000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into employee values(2,"srividya','AI developer',15000000);
+    "> ^C
+mysql> insert into employee values(2,'srividya','AI developer',15000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(3,'darshini','software engineer',200000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee valeus(4,'govardhan','cloud engineer',1200000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'valeus(4,'govardhan','cloud engineer',1200000)' at line 1
+mysql> insert into employee values(4,'govardhan','cloud engineer',1200000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-------------------+----------+
+| id   | name      | role              | sal      |
++------+-----------+-------------------+----------+
+|    1 | harsha    | web developer     |  1000000 |
+|    2 | srividya  | AI developer      | 15000000 |
+|    3 | darshini  | software engineer |   200000 |
+|    4 | govardhan | cloud engineer    |  1200000 |
++------+-----------+-------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update employee set salary=2000000 where id=3;
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> update employee set sal=2000000 where id=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from employee;
++------+-----------+-------------------+----------+
+| id   | name      | role              | sal      |
++------+-----------+-------------------+----------+
+|    1 | harsha    | web developer     |  1000000 |
+|    2 | srividya  | AI developer      | 15000000 |
+|    3 | darshini  | software engineer |  2000000 |
+|    4 | govardhan | cloud engineer    |  1200000 |
++------+-----------+-------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee ADD location varchar(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int         | YES  |     | NULL    |       |
+| name     | varchar(50) | YES  |     | NULL    |       |
+| role     | varchar(30) | YES  |     | NULL    |       |
+| sal      | int         | YES  |     | NULL    |       |
+| location | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>  create table employee details(
+    ->             emp_id IN PRIMARY KEY,
+    ->             emp_name Varchar(20) NOT NULL,
+    ->             email varchar (50) UNIQUE,
+    ->             age INT check (age>=18),
+    ->             salary INT DEFAULT 25000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'details(
+            emp_id IN PRIMARY KEY,
+            emp_name Varchar(20) NO' at line 1
+mysql> create table employee details(
+    ->             emp_id IN PRIMARY KEY,
+    ->             emp_name Varchar(20) NOT NULL,
+    ->             email varchar (50) UNIQUE,
+    ->             age INT check (age>=18),
+    ->             sal INT DEFAULT 25000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'details(
+            emp_id IN PRIMARY KEY,
+            emp_name Varchar(20) NOT' at line 1
+mysql> create table employee_details(
+    ->             emp_id IN PRIMARY KEY,
+    ->             emp_name Varchar(20) NOT NULL,
+    ->             email varchar (50) UNIQUE,
+    ->             age INT check (age>=18),
+    ->             sal INT DEFAULT 25000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IN PRIMARY KEY,
+            emp_name Varchar(20) NOT NULL,
+            email var' at line 2
+mysql> create table employee_details(
+    ->             emp_id INT PRIMARY KEY,
+    ->             emp_name Varchar(20) NOT NULL,
+    ->             email varchar (50) UNIQUE,
+    ->             age INT check (age>=18),
+    ->             sal INT DEFAULT 25000);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into employee_details(101,'ravi','ravi@gmail.com,21,4000000);
+    '> ^C
+mysql> insert into employee_details(101,'ravi','ravi@gmail.com',21,4000000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '101,'ravi','ravi@gmail.com',21,4000000)' at line 1
+mysql> insert into employee_details values(101,'ravi','ravi@gmail.com',21,4000000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into employee_details values(101,'sri vidhya','srividhya@gmail.com',22,1200000);
+ERROR 1062 (23000): Duplicate entry '101' for key 'employee_details.PRIMARY'
+mysql> insert into employee(emp_id,email,age)values(103,srikanth@gmail.com,23);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com,23)' at line 1
+mysql> insert into employee(emp_id,email,age)values(103,'srikanth@gmail.com',23);
+ERROR 1054 (42S22): Unknown column 'emp_id' in 'field list'
+mysql> insert into employee(emp_id,email,age)values(102,'srikanth@gmail.com',23);
+ERROR 1054 (42S22): Unknown column 'emp_id' in 'field list'
+mysql> insert into employee_details(emp_id,email,age)values(102,'srikanth@gmail.com',23);
+ERROR 1364 (HY000): Field 'emp_name' doesn't have a default value
+mysql> insert into employee_details(emp_id,emp_name,email,age)values(102,'sri,'srikanth@gmail.com',23);
+    '> ^C
+mysql> insert into employee_details(emp_id,emp_name,email,age)values(102,'sri','srikanth@gmail.com',23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(101,harsha','srividhya@gmail.com',22,1200000);
+    '> ^C
+mysql> insert into employee_details values(101,'harsha','srividhya@gmail.com',22,1200000);
+ERROR 1062 (23000): Duplicate entry '101' for key 'employee_details.PRIMARY'
+mysql> insert into employee_details values(104,'harsha','srividhya@gmail.com',20,1200000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(101,'harsha','srividhya@gmail.com',20,1200000);
+ERROR 1062 (23000): Duplicate entry '101' for key 'employee_details.PRIMARY'
+mysql> insert into employee_details values(105,'sai','srividhya@gmail.com',23,1000000);
+ERROR 1062 (23000): Duplicate entry 'srividhya@gmail.com' for key 'employee_details.email'
+mysql> insert into employee_details values(105,'sai','sai@gmail.com',23,1000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(106,'vasavika','vasavika@gmail.com',12,800000);
+ERROR 3819 (HY000): Check constraint 'employee_details_chk_1' is violated.
+mysql> insert into employee_details values(106,'vasavika','vasavika@gmail.com',21,00000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(106,'vasavika','vasavika@gmail.com',21,800000);
+ERROR 1062 (23000): Duplicate entry '106' for key 'employee_details.PRIMARY'
+mysql> insert into employee_details values(106,'vasavika','vasavika@gmail.com',21,150000);
+ERROR 1062 (23000): Duplicate entry '106' for key 'employee_details.PRIMARY'
+mysql> insert into employee_details values(107,'vasavika','vasavika@gmail.com',21,150000);
+ERROR 1062 (23000): Duplicate entry 'vasavika@gmail.com' for key 'employee_details.email'
+mysql> ^C
+mysql> insert into employee_details values(108,'raju',raju@gmail.com,19);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@gmail.com,19)' at line 1
+mysql> insert into employee_details values(109,'srinu',srinu@gmail.com,19):
+    -> ^C
+mysql> insert into employee_details values(109,'srinu','srinu@gmail.com',19);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into employee_details(emp_id,emp_name,email,age)values(109,'srinu','srinu@gmail.com',19);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_details;
++--------+----------+---------------------+------+---------+
+| emp_id | emp_name | email               | age  | sal     |
++--------+----------+---------------------+------+---------+
+|    101 | ravi     | ravi@gmail.com      |   21 | 4000000 |
+|    102 | sri      | srikanth@gmail.com  |   23 |   25000 |
+|    104 | harsha   | srividhya@gmail.com |   20 | 1200000 |
+|    105 | sai      | sai@gmail.com       |   23 | 1000000 |
+|    106 | vasavika | vasavika@gmail.com  |   21 |       0 |
+|    109 | srinu    | srinu@gmail.com     |   19 |   25000 |
++--------+----------+---------------------+------+---------+
+6 rows in set (0.01 sec)
+
+mysql> desc employee_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| emp_name | varchar(20) | NO   |     | NULL    |       |
+| email    | varchar(50) | YES  | UNI | NULL    |       |
+| age      | int         | YES  |     | NULL    |       |
+| sal      | int         | YES  |     | 25000   |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> alter table employee_details ADD dept_id INT;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee_details:
+    -> C
+    -> ^C
+mysql> desc employee_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| emp_name | varchar(20) | NO   |     | NULL    |       |
+| email    | varchar(50) | YES  | UNI | NULL    |       |
+| age      | int         | YES  |     | NULL    |       |
+| sal      | int         | YES  |     | 25000   |       |
+| dept_id  | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> create table department(
+    -> dept_id INT PRIMARY KEY,
+    -> dep_name varchar(30) NOT NULL);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into department values(1'IT'),(2,'HR'0,93,'finance');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''IT'),(2,'HR'0,93,'finance')' at line 1
+mysql> insert into department values(1'IT'),(2,'HR',93,'finance');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''IT'),(2,'HR',93,'finance')' at line 1
+mysql> insert into department values(1'IT'),(2,'HR'),(3,'finance');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''IT'),(2,'HR'),(3,'finance')' at line 1
+mysql> INSERT INTO department VALUES
+    -> (1, 'IT'),
+    -> (2, 'HR'),
+    -> (3, 'Finance');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++---------+----------+
+| dept_id | dep_name |
++---------+----------+
+|       1 | IT       |
+|       2 | HR       |
+|       3 | Finance  |
++---------+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee_details
+    -> ADD constaint fk_employee_department
+    -> FOREIGN KET(dep_id)
+    -> REFERENCES department(dept_id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fk_employee_department
+FOREIGN KET(dep_id)
+REFERENCES department(dept_id)' at line 2
+mysql> alter table employee_details
+    -> ADD CONSTRAINT fk_employee_department
+    -> FOREIGN KEY(dep_id)
+    -> REFERENCES department(dept_id);
+ERROR 1072 (42000): Key column 'dep_id' doesn't exist in table
+mysql>  alter table employee_details
+    ->     -> ADD CONSTRAINT fk_employee_department
+    ->     -> FOREIGN KEY(dep_id)
+    -> ^C
+mysql> alter table employee_details
+    -> ADD CONSTRAINT fk_employee_department
+    -> FOREIGN KEY(depT_id)
+    -> REFERENCES department(dept_id);
+Query OK, 6 rows affected (0.19 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql>  desc employee_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| emp_name | varchar(20) | NO   |     | NULL    |       |
+| email    | varchar(50) | YES  | UNI | NULL    |       |
+| age      | int         | YES  |     | NULL    |       |
+| sal      | int         | YES  |     | 25000   |       |
+| dept_id  | int         | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> slelect *from employee_details;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slelect *from employee_details' at line 1
+mysql> select *from employee_details;
++--------+----------+---------------------+------+---------+---------+
+| emp_id | emp_name | email               | age  | sal     | dept_id |
++--------+----------+---------------------+------+---------+---------+
+|    101 | ravi     | ravi@gmail.com      |   21 | 4000000 |    NULL |
+|    102 | sri      | srikanth@gmail.com  |   23 |   25000 |    NULL |
+|    104 | harsha   | srividhya@gmail.com |   20 | 1200000 |    NULL |
+|    105 | sai      | sai@gmail.com       |   23 | 1000000 |    NULL |
+|    106 | vasavika | vasavika@gmail.com  |   21 |       0 |    NULL |
+|    109 | srinu    | srinu@gmail.com     |   19 |   25000 |    NULL |
++--------+----------+---------------------+------+---------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into employee_details(emp_id,emp_name,email,age,salary,dept_id) values(107,'sai','sai@gmail.com',22,300000,1);
+ERROR 1054 (42S22): Unknown column 'salary' in 'field list'
+mysql> insert into employee_details(emp_id,emp_name,email,age,sal,dept_id) values(107,'sai','sai@gmail.com',22,300000,1);
+ERROR 1062 (23000): Duplicate entry 'sai@gmail.com' for key 'employee_details.email'
+mysql> insert into employee_details(emp_id,emp_name,email,age,sal,dept_id) values(107,'vishnu','vishnu@gmail.com',24,300000,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  desc employee_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | NO   | PRI | NULL    |       |
+| emp_name | varchar(20) | NO   |     | NULL    |       |
+| email    | varchar(50) | YES  | UNI | NULL    |       |
+| age      | int         | YES  |     | NULL    |       |
+| sal      | int         | YES  |     | 25000   |       |
+| dept_id  | int         | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select *from employee_details;
++--------+----------+---------------------+------+---------+---------+
+| emp_id | emp_name | email               | age  | sal     | dept_id |
++--------+----------+---------------------+------+---------+---------+
+|    101 | ravi     | ravi@gmail.com      |   21 | 4000000 |    NULL |
+|    102 | sri      | srikanth@gmail.com  |   23 |   25000 |    NULL |
+|    104 | harsha   | srividhya@gmail.com |   20 | 1200000 |    NULL |
+|    105 | sai      | sai@gmail.com       |   23 | 1000000 |    NULL |
+|    106 | vasavika | vasavika@gmail.com  |   21 |       0 |    NULL |
+|    107 | vishnu   | vishnu@gmail.com    |   24 |  300000 |       1 |
+|    109 | srinu    | srinu@gmail.com     |   19 |   25000 |    NULL |
++--------+----------+---------------------+------+---------+---------+
+7 rows in set (0.00 sec)
+
+mysql> show create table employee_details;
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table            | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| employee_details | CREATE TABLE `employee_details` (
+  `emp_id` int NOT NULL,
+  `emp_name` varchar(20) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `sal` int DEFAULT '25000',
+  `dept_id` int DEFAULT NULL,
+  PRIMARY KEY (`emp_id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `fk_employee_department` (`dept_id`),
+  CONSTRAINT `fk_employee_department` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`),
+  CONSTRAINT `employee_details_chk_1` CHECK ((`age` >= 18))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
